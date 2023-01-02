@@ -15,12 +15,15 @@ namespace MicroRabbit.Transfer.Domain.EventHandlers
 
         public Task Handle(TransferCreatedEvent @event)
         {
-            _transferRepository.Add(new Models.TransferLog
+            if (@event != null)
             {
-                FromAccount = @event.From,
-                ToAccount = @event.To,
-                Amount = @event.Amount
-            });
+                _transferRepository.Add(new Models.TransferLog
+                {
+                    FromAccount = @event.From,
+                    ToAccount = @event.To,
+                    Amount = @event.Amount
+                });
+            }
 
             return Task.CompletedTask;
         }

@@ -46,6 +46,7 @@ namespace MicroRabbit.Infra.Bus
                 channel.BasicPublish(string.Empty, eventName, null, body);
             }
         }
+
         public void Subscribe<T, TH>()
             where T : Event
             where TH : IEventHandler<T>
